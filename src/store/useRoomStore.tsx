@@ -2,10 +2,10 @@ import { create } from 'zustand';
 import type { Room } from '../core/entities/Room';
 
 interface RoomState {
-    currentHouseId: string | null; // AJOUT
+    currentHouseId: string | null; 
     currentRoom: Room | null;
     isLoading: boolean;
-    setHouse: (houseId: string) => void; // AJOUT
+    setHouse: (houseId: string) => void; 
     setCurrentRoom: (room: Room) => void;
     setIsLoading: (loading: boolean) => void;
 }

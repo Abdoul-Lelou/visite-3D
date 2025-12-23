@@ -4,7 +4,7 @@ export interface House {
     id: string;
     name: string;
     description: string;
-    thumbnail: string; // Image pour la carte de sélection
+    thumbnail: string; 
     rooms: Record<string, Room>;
     startRoomId: string;
     location: string;

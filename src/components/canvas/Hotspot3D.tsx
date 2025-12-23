@@ -14,19 +14,19 @@ export const Hotspot3D: React.FC<HotspotProps> = ({ label, position, onClick }) 
     return (
         <group position={position}>
             <Billboard>
-                {/* L'anneau extérieur pulsant */}
+                {/* anneau extérieur pulsant */}
                 <mesh onClick={onClick} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
                     <ringGeometry args={[0.4, 0.5, 32]} />
                     <meshBasicMaterial color={hovered ? "#00ffcc" : "white"} transparent opacity={0.8} />
                 </mesh>
 
-                {/* Le point central */}
+                {/* point central */}
                 <mesh>
                     <circleGeometry args={[0.1, 32]} />
                     <meshBasicMaterial color={hovered ? "#00ffcc" : "white"} />
                 </mesh>
 
-                {/* Label flottant avec Glassmorphism via CSS-in-JS */}
+                {/* Label flottant avec Glassmorphism */}
                 <Html distanceFactor={10} position={[0, -0.8, 0]} center>
                     <div style={{
                         userSelect: 'none',

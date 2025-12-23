@@ -16,7 +16,6 @@ export const Overlay: React.FC<OverlayProps> = ({ onNavigate }) => {
 
     return (
         <>
-            {/* 1. ÉCRAN DE CHARGEMENT PRO */}
             <Backdrop
                 sx={{ color: '#00ffcc', zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'rgba(0,0,0,0.9)' }}
                 open={isLoading}
@@ -27,14 +26,12 @@ export const Overlay: React.FC<OverlayProps> = ({ onNavigate }) => {
                 </Stack>
             </Backdrop>
 
-            {/* 2. INTERFACE UTILISATEUR (OVERLAY) */}
             <Box sx={{
                 position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
                 pointerEvents: 'none', zIndex: 10, p: 4,
                 display: 'flex', flexDirection: 'column', justifyContent: 'space-between'
             }}>
                 
-                {/* HEADER : Titre et Localisation */}
                 <Box sx={{ pointerEvents: 'auto' }}>
                     <Paper elevation={0} sx={{
                         p: 2, display: 'inline-block',
@@ -54,7 +51,6 @@ export const Overlay: React.FC<OverlayProps> = ({ onNavigate }) => {
                     </Paper>
                 </Box>
 
-                {/* FOOTER : Navigation Navigation */}
                 <Box sx={{
                     display: 'flex', justifyContent: 'center', pb: 4,
                     pointerEvents: 'auto'

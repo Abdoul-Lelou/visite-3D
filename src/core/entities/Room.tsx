@@ -7,7 +7,7 @@ export interface Hotspot {
 export interface Room {
     id: string;
     name: string;
-    icon: string; // Identifiant de l'icône (ex: 'bed', 'kitchen')
+    icon: string; 
     panoramaUrl: string;
     hotspots: Hotspot[];
 }

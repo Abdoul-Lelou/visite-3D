@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useRoomStore from '../store/useRoomStore';
-import { HOUSES } from '../api/mockData'; // On utilise HOUSES maintenant
+import { HOUSES } from '../api/mockData'; 
 
 export const useRoomLoader = (houseId: string, roomId: string) => {
     const { setCurrentRoom, setIsLoading } = useRoomStore();

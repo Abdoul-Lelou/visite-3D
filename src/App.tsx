@@ -5,7 +5,7 @@ import {
     CssBaseline, Button, Typography 
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import CodeIcon from '@mui/icons-material/Code'; // Import pour l'icône dev
+import CodeIcon from '@mui/icons-material/Code'; 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
 
@@ -65,7 +65,7 @@ export default function App() {
                         fontWeight: 600,
                         letterSpacing: 0.5
                     }}>
-                        Développé par <span style={{ color: '#00ffcc' }}>Gemini Expert</span> © 2025
+                        Développé par <span style={{ color: '#00ffcc' }}>Abdourahmane DIALLO</span> © 2025
                     </Typography>
                 </Box>
 

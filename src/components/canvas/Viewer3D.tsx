@@ -30,7 +30,7 @@ export const Viewer3D: React.FC = () => {
                     key={`${currentRoom.id}-${i}`}
                     label={spot.label}
                     position={spot.pos}
-                    onClick={() => {/* Géré par l'Overlay bouton ou ici */}}
+                    onClick={() => {}}
                 />
             ))}
         </group>
