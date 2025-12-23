@@ -5,6 +5,7 @@ import {
     CssBaseline, Button, Typography 
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import CodeIcon from '@mui/icons-material/Code'; // Import pour l'icône dev
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
 
@@ -26,7 +27,6 @@ export default function App() {
 
     const stopRotation = () => { if (autoRotate) setAutoRotate(false); };
 
-    // Logique de navigation guidée
     const connectedRooms = currentHouseId && currentRoom 
         ? currentRoom.hotspots.map(spot => HOUSES[currentHouseId].rooms[spot.target]).filter(Boolean)
         : [];
@@ -40,8 +40,36 @@ export default function App() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center', 
                 overflow: 'hidden', touchAction: 'none'
             }}>
+                {/* COPYRIGHT DÉVELOPPEUR 
+                    Visible en permanence pour asseoir votre expertise
+                */}
+                <Box sx={{
+                    position: 'absolute',
+                    bottom: 15,
+                    right: 20,
+                    zIndex: 2000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(10px)',
+                    p: '5px 15px',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(0,255,204,0.3)',
+                    boxShadow: '0 0 15px rgba(0,255,204,0.1)'
+                }}>
+                    <CodeIcon sx={{ fontSize: 16, color: '#00ffcc' }} />
+                    <Typography sx={{ 
+                        color: 'white', 
+                        fontSize: '0.7rem', 
+                        fontWeight: 600,
+                        letterSpacing: 0.5
+                    }}>
+                        Développé par <span style={{ color: '#00ffcc' }}>Gemini Expert</span> © 2025
+                    </Typography>
+                </Box>
+
                 <AnimatePresence mode="wait">
-                    
                     {!currentHouseId ? (
                         <motion.div 
                             key="picker"
@@ -55,7 +83,6 @@ export default function App() {
                             }} />
                         </motion.div>
                     ) : (
-                        
                         <motion.div 
                             key="viewer"
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -68,14 +95,12 @@ export default function App() {
                                 background: '#111' 
                             }}
                         >
-                            {/* 1. DÉGRADÉ DE PROTECTION (Vignettage) pour la lisibilité sur fond blanc */}
                             <Box sx={{
                                 position: 'absolute', inset: 0, zIndex: 10,
                                 background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.6) 100%)',
                                 pointerEvents: 'none'
                             }} />
 
-                            {/* 2. BOUTON FERMER RENFORCÉ */}
                             <IconButton 
                                 onClick={() => setHouse("")} 
                                 sx={{ 
@@ -88,7 +113,6 @@ export default function App() {
                                 <CloseIcon />
                             </IconButton>
 
-                            {/* 3. TITRE AVEC OMBRAGE PORTÉ */}
                             <Box sx={{ 
                                 position: 'absolute', top: 35, left: '50%', transform: 'translateX(-50%)', 
                                 zIndex: 1000, textAlign: 'center'
@@ -102,7 +126,6 @@ export default function App() {
                                 </Typography>
                             </Box>
 
-                            {/* 4. ROUE DE NAVIGATION (CONTRASTE ÉLEVÉ) */}
                             <Box sx={{
                                 position: 'absolute', bottom: isMobile ? 40 : 50, left: '50%', 
                                 transform: 'translateX(-50%)', zIndex: 1000, 
@@ -110,7 +133,6 @@ export default function App() {
                             }}>
                                 <Box sx={{
                                     display: 'flex', gap: 1.5, p: 1.2, px: 3,
-                                    // Fond plus sombre et flou plus fort
                                     background: 'rgba(0, 0, 0, 0.5)', 
                                     backdropFilter: 'blur(30px) saturate(150%)',
                                     borderRadius: '50px', 
@@ -143,7 +165,6 @@ export default function App() {
                                 </Typography>
                             </Box>
 
-                            {/* 5. CANVAS 3D */}
                             <Box sx={{ position: 'absolute', inset: 0, zIndex: 1 }} onMouseDown={stopRotation} onTouchStart={stopRotation}>
                                 <Canvas 
                                     key={currentRoom?.id}
