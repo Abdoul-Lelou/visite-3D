@@ -48,7 +48,7 @@ export default function App() {
                             style={{ 
                                 width: '100%', height: '100%', display: 'flex', 
                                 flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                                position: 'relative'
+                                position: 'relative', overflowY: 'auto'
                             }}
                         >
                             <HousePicker onSelect={(id) => {
@@ -57,11 +57,7 @@ export default function App() {
                                 setHouse(id);
                             }} />
 
-                            {/* COPYRIGHT VERSION PICKER - Discret en bas */}
-                            <Box sx={{
-                                position: 'absolute', bottom: 10, opacity: 0.6,
-                                display: 'flex', alignItems: 'center', gap: 1
-                            }}>
+                            <Box sx={{ py: 3, opacity: 0.5, display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <Typography sx={{ color: 'white', fontSize: '0.6rem', fontWeight: 500 }}>
                                     A. DIALLO © 2025
                                 </Typography>
@@ -80,33 +76,23 @@ export default function App() {
                                 background: '#111' 
                             }}
                         >
-                            {/* COPYRIGHT VERSION VIEWER - Intégré au cadre */}
                             <Box sx={{
                                 position: 'absolute',
-                                bottom: isMobile ? 10 : 20,
-                                right: isMobile ? 10 : 25,
+                                top: isMobile ? 'auto' : 20,
+                                bottom: isMobile ? 120 : 'auto', 
+                                left: isMobile ? 15 : 25,
                                 zIndex: 2000,
                                 display: 'flex', alignItems: 'center', gap: 1,
-                                bgcolor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(10px)',
-                                p: isMobile ? '4px 10px' : '6px 16px',
-                                borderRadius: '20px',
-                                border: '1px solid rgba(0,255,204,0.2)',
+                                bgcolor: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)',
+                                p: '4px 10px', borderRadius: '15px',
+                                border: '1px solid rgba(255,255,255,0.1)',
                                 pointerEvents: 'none'
                             }}>
-                                <CodeIcon sx={{ fontSize: isMobile ? 12 : 16, color: '#00ffcc' }} />
-                                <Typography sx={{ 
-                                    color: 'white', fontSize: isMobile ? '0.55rem' : '0.7rem', 
-                                    fontWeight: 600, whiteSpace: 'nowrap'
-                                }}>
-                                    Expertise <span style={{ color: '#00ffcc' }}>A. DIALLO</span>
+                                <CodeIcon sx={{ fontSize: 12, color: '#00ffcc' }} />
+                                <Typography sx={{ color: 'white', fontSize: '0.55rem', fontWeight: 700 }}>
+                                    A. DIALLO
                                 </Typography>
                             </Box>
-
-                            <Box sx={{
-                                position: 'absolute', inset: 0, zIndex: 10,
-                                background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.7) 100%)',
-                                pointerEvents: 'none'
-                            }} />
 
                             <IconButton 
                                 onClick={() => setHouse("")} 
@@ -120,49 +106,34 @@ export default function App() {
                                 <CloseIcon fontSize={isMobile ? "small" : "medium"} />
                             </IconButton>
 
-                            {/* TITRE PIECE - Responsive Font */}
-                            <Box sx={{ 
-                                position: 'absolute', top: isMobile ? 20 : 35, left: '50%', transform: 'translateX(-50%)', 
-                                zIndex: 1000, textAlign: 'center', width: '60%'
-                            }}>
-                                <Typography sx={{ 
-                                    color: 'white', fontWeight: 900, textTransform: 'uppercase', 
-                                    letterSpacing: isMobile ? 1 : 3, textShadow: '0 4px 15px rgba(0,0,0,1)',
-                                    fontSize: isMobile ? '0.75rem' : '1.1rem',
-                                    lineHeight: 1.2
-                                }}>
-                                    {currentRoom?.name}
-                                </Typography>
-                            </Box>
-
-                            {/* NAVIGATION ROUETTE - Mobile Optimized */}
+                            {/* NAVIGATION MOBILE */}
                             <Box sx={{
-                                position: 'absolute', bottom: isMobile ? 45 : 50, left: '50%', 
-                                transform: 'translateX(-50%)', zIndex: 1000, 
-                                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1
+                                position: 'absolute', bottom: isMobile ? 20 : 40, left: 0, right: 0,
+                                zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1
                             }}>
                                 <Box sx={{
-                                    display: 'flex', gap: isMobile ? 1 : 1.5, p: isMobile ? 0.8 : 1.2, px: isMobile ? 2 : 3,
-                                    background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(20px)',
-                                    borderRadius: '50px', border: '1px solid rgba(0,255,204,0.2)',
-                                    boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                                    maxWidth: '95vw', overflowX: 'auto',
-                                    '&::-webkit-scrollbar': { display: 'none' }
+                                    display: 'flex', gap: 1, p: 1,
+                                    bgcolor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(20px)',
+                                    borderRadius: isMobile ? '20px' : '50px',
+                                    border: '1px solid rgba(0,255,204,0.3)',
+                                    maxWidth: '90vw', 
+                                    overflowX: 'auto', 
+                                    whiteSpace: 'nowrap',
+                                    scrollbarWidth: 'none', '&::-webkit-scrollbar': { display: 'none' }
                                 }}>
                                     {connectedRooms.map((room) => (
                                         <Button
                                             key={room.id}
                                             onClick={() => setCurrentRoom(room)}
-                                            size="small"
                                             sx={{
                                                 color: 'white', bgcolor: 'rgba(255,255,255,0.1)',
-                                                borderRadius: '20px', px: isMobile ? 1.5 : 3, py: isMobile ? 0.4 : 0.8,
-                                                fontWeight: 800, fontSize: isMobile ? '0.6rem' : '0.75rem', 
-                                                textTransform: 'none', whiteSpace: 'nowrap', minWidth: 'auto',
+                                                borderRadius: '15px', px: 2, py: 0.5,
+                                                fontWeight: 700, fontSize: isMobile ? '0.65rem' : '0.75rem', 
+                                                textTransform: 'none', flexShrink: 0,
                                                 '&:hover': { bgcolor: '#00ffcc', color: '#000' }
                                             }}
                                         >
-                                            {isMobile ? room.name : `→ ${room.name}`}
+                                            {room.name}
                                         </Button>
                                     ))}
                                 </Box>
@@ -176,17 +147,14 @@ export default function App() {
                             <Box sx={{ position: 'absolute', inset: 0, zIndex: 1 }} onMouseDown={stopRotation} onTouchStart={stopRotation}>
                                 <Canvas 
                                     key={currentRoom?.id}
-                                    camera={{ position: [0, 0, 0.1], fov: isMobile ? 85 : 70 }} 
+                                    camera={{ position: [0, 0, 0.1], fov: isMobile ? 90 : 70 }} 
                                     style={{ width: '100%', height: '100%' }}
                                 >
                                     <React.Suspense fallback={null}>
                                         <Viewer3D />
                                         <Preload all />
                                     </React.Suspense>
-                                    <OrbitControls 
-                                        enableZoom={true} enablePan={false} makeDefault 
-                                        autoRotate={autoRotate} autoRotateSpeed={0.8}
-                                    />
+                                    <OrbitControls enableZoom={true} enablePan={false} makeDefault autoRotate={autoRotate} autoRotateSpeed={0.8} />
                                 </Canvas>
                             </Box>
                         </motion.div>
