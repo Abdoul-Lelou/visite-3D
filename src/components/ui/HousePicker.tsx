@@ -27,7 +27,7 @@ export const HousePicker: React.FC<{ onSelect: (id: string) => void }> = ({ onSe
 
                 <Grid container spacing={3} justifyContent="center"> 
                     {Object.values(HOUSES).map((house) => (
-                        <Grid item key={house.id} xs={10} sm={6} md={4}>
+                        <Grid key={house.id} size={{ xs: 12, sm: 6, md: 4 }}>
                             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                                 <Card onClick={() => onSelect(house.id)} sx={{ 
                                     background: 'rgba(30, 30, 30, 0.4)', 
