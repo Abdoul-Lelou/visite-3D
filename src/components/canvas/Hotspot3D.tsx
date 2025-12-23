@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Html, Billboard, Text } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import { Html, Billboard } from '@react-three/drei';
 
 interface HotspotProps {
     label: string;

@@ -7,7 +7,7 @@ export const FloatingSpheres = () => {
     const group = useRef<THREE.Group>(null!);
     const colors = ['#00ffcc', '#ff0077', '#0077ff', '#ffcc00', '#00ff55'];
 
-    useFrame((state) => {
+    useFrame(() => {
         group.current.rotation.y += 0.002;
     });
 
